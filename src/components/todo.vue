@@ -1,5 +1,6 @@
 <template>
   <div class="page lists-show">
+    <!-- 上半部分 -->
     <nav>
       <!-- icon -->
       <div class="nav-group">
@@ -12,10 +13,34 @@
         <span class="title-wrapper">{{todo.title}}</span>
         <span class="count-list">{{todo.count}}</span>
       </h1>
-      <!--  -->
+      <!-- right icon -->
+      <div class="nav-group right">
+        <div class="options-web">
+          <a class="nav-item">
+            <span class="icon-unlock"></span>
+          </a>
+          <a class="nav-item">
+            <span class="icon-trash"></span>
+          </a>
+        </div>
+      </div>
+      <!-- Input -->
+      <div class=" form todo-new input-symbol">
+        <input placeholder="Please Enter" type="text" v-model="text" @keyup="onAdd" :disabled="todo.locked">
+        <span class="icon-add"></span>
+      </div>
+    </nav>
+    <!-- 下半部分 -->
+    <div class="content-scrollable list-items">
+      <div v-for="item in items">
+        <item :item="item"></item>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import item from './item';
 export default {
   data() {
     return {
@@ -26,7 +51,7 @@ export default {
       },
       items: [
         {
-          checked: false,
+          checked: true,
           text: "Call Me By Your Name",
           isDelete: false
         },
@@ -36,7 +61,7 @@ export default {
           isDelete: false
         },
         {
-          checked: false,
+          checked: true,
           text: "The King",
           isDelete: false
         }
@@ -53,6 +78,9 @@ export default {
       });
       this.text = "";
     }
+  },
+  components: {
+    item
   }
 };
 </script>
