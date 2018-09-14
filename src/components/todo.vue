@@ -32,7 +32,7 @@
     </nav>
     <!-- 下半部分 -->
     <div class="content-scrollable list-items">
-      <div v-for="item in items">
+      <div v-for="item in items" :key="item">
         <item :item="item"></item>
       </div>
     </div>
@@ -41,6 +41,7 @@
 
 <script>
 import item from './item';
+
 export default {
   data() {
     return {
