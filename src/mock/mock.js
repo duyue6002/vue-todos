@@ -47,5 +47,36 @@ export default {
         }, 200);
       });
     });
+
+    mock.onGet('/todo/listId').reply(config => {
+      let {
+        id
+      } = config.params;
+      let todo = Todos.find(tode => {
+        return id && tode.id === id;
+      });
+      todo.count = todo.record.filter((data) => {
+        return data.checked === false;
+      }).length;
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200, {
+            todo
+          }]);
+        }, 200);
+      });
+    });
+
+    mock.onPost('/todo/addRecord').reply(config => {
+      let {
+        id,
+        text
+      } = JSON.parse(config.data);
+      Todos.some((t, index) => {
+        if (t.id === id) {
+          t.record.push();
+        }
+      })
+    })
   }
 };

@@ -42,6 +42,14 @@ export default {
         });
       });
     }
+  },
+  watch: {
+    todoId(id) {
+      this.$router.push({
+        name: 'todo',
+        params: { id }
+      });
+    }
   }
 };
 </script>

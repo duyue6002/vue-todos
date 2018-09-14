@@ -57,6 +57,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'arrow-parens': 0,
     'no-unused-vars': 0,
-    'eol-last': 0
+    'eol-last': 0,
+    'semi': 0
   }
 }
