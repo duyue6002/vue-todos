@@ -58,6 +58,8 @@ module.exports = {
     'arrow-parens': 0,
     'no-unused-vars': 0,
     'eol-last': 0,
-    'semi': 0
+    'semi': 0,
+    'consistent-return': 0,
+    'array-callback-return': 0
   }
 }

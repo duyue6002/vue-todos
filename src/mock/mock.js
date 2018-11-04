@@ -74,8 +74,18 @@ export default {
       } = JSON.parse(config.data);
       Todos.some((t, index) => {
         if (t.id === id) {
-          t.record.push();
+          t.record.push({
+            text,
+            isDelete: false,
+            checked: false
+          });
+          return true;
         }
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200]);
+        }, 200);
       })
     })
   }
