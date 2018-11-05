@@ -87,6 +87,20 @@ export default {
           resolve([200]);
         }, 200);
       })
-    })
+    });
+
+    mock.onPost('/todo/editTodo').reply(config => {
+      let {
+        todo
+      } = JSON.parse(config.data);
+      Todos.some((t, index) => {
+        if (t.id === todo.id) {
+          t.title = todo.title;
+          t.count = todo.count;
+          t.locked = todo.locked;
+          t.isDelete = todo.isDelete;
+        }
+      })
+    });
   }
 };
