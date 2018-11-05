@@ -1,12 +1,12 @@
 <template>
-  <div class="page lists-show">
+  <div class="page lists-show" v-show="!todo.isDelete">
     <nav>
+      <!-- update title -->
       <div class="form list-edit-form" v-show="isUpdate">
         <input type="text" v-model="todo.title" @keyup.enter="updateTitle" :disabled="todo.locked">
         <div class="nav-group right">
           <a class="nav-item" @click="isUpdate = false">
-            <span class="icon-close">
-            </span>
+            <span class="icon-close"></span>
           </a>
         </div>
       </div>
@@ -17,7 +17,7 @@
         </a>
       </div>
       <!-- title -->
-      <h1 class="title-page" @click="$store.dispatch('updateMenu')" v-show="!isUpdate">
+      <h1 class="title-page" @click="isUpdate = true" v-show="!isUpdate">
         <span class="title-wrapper">{{todo.title}}</span>
         <span class="count-list">{{todo.count || 0}}</span>
       </h1>
@@ -41,8 +41,8 @@
     </nav>
     <!-- 下半部分 -->
     <div class="content-scrollable list-items">
-      <div v-for="item in items">
-        <item :item="item"></item>
+      <div v-for="(item, index) in items" :key="index">
+        <item :item="item" :index="index" :id="todo.id" :init="init" :locked="todo.locked"></item>
       </div>
     </div>
   </div>

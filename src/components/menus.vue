@@ -23,11 +23,6 @@ export default {
     };
   },
   created() {
-    // getTodoList({}).then(res => {
-    //   const TODOS = res.data.todos;
-    //   this.items = TODOS;
-    //   this.todoId = TODOS[0].id;
-    // });
     this.$store.dispatch('getTodo').then(() => {
       this.$nextTick(() => {
         this.goList(this.todoList[0].id);
@@ -43,15 +38,6 @@ export default {
     goList(id) {
       this.todoId = id;
     },
-    // addTodoList() {
-    //   addTodo({}).then(data => {
-    //     getTodoList({}).then(res => {
-    //       const TODOS = res.data.todos;
-    //       this.todoId = TODOS[TODOS.length - 1].id;
-    //       this.items = TODOS;
-    //     });
-    //   });
-    // }
     addTodoList() {
       addTodo({}).then(data => {
         this.$store.dispatch('getTodo').then(() => {

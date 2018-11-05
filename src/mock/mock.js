@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import Mock from 'mockjs';
@@ -96,10 +97,34 @@ export default {
       Todos.some((t, index) => {
         if (t.id === todo.id) {
           t.title = todo.title;
-          t.count = todo.count;
           t.locked = todo.locked;
           t.isDelete = todo.isDelete;
+          return true;
         }
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200]);
+        }, 200);
+      })
+    });
+
+    mock.onPost('/todo/editRecord').reply(config => {
+      let {
+        id,
+        record,
+        index
+      } = JSON.parse(config.data);
+      Todos.some((t) => {
+        if (t.id === id) {
+          t.record[index] = record;
+          return true;
+        }
+      });
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200]);
+        }, 200);
       })
     });
   }
