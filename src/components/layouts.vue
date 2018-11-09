@@ -3,8 +3,8 @@
     <section class="menu">
       <menus></menus>
     </section>
-    <div class="content-overlay" @click="$store.dispacth('updateMenu')"></div>
-    <div class="content-container" >
+    <div class="content-overlay" @click="$store.dispatch('updateMenu')"></div>
+    <div class="content-container">
       <router-view></router-view>
     </div>
   </section>
@@ -13,11 +13,10 @@
 <script>
 import menus from './menus';
 import todo from './todo';
-
 export default {
   components: {
     menus,
-    todo,
+    todo
   },
   computed: {
     menuOpen() {

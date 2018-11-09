@@ -60,6 +60,7 @@ module.exports = {
     'eol-last': 0,
     'semi': 0,
     'consistent-return': 0,
-    'array-callback-return': 0
+    'array-callback-return': 0,
+    "no-shadow": 0
   }
 }

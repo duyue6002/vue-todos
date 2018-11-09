@@ -1,10 +1,14 @@
 <template>
+  <!-- v-show 用来定义 display字段 -->
   <div class="page lists-show" v-show="!todo.isDelete">
     <nav>
       <!-- update title -->
       <div class="form list-edit-form" v-show="isUpdate">
+        <!-- updateTitle只写方法名即可 -->
+        <!-- v-model 实现数据双向绑定，监听输入事件并更新数据 -->
         <input type="text" v-model="todo.title" @keyup.enter="updateTitle" :disabled="todo.locked">
         <div class="nav-group right">
+          <!-- 直接修改数据值 -->
           <a class="nav-item" @click="isUpdate = false">
             <span class="icon-close"></span>
           </a>
