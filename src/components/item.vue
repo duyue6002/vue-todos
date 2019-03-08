@@ -6,7 +6,7 @@
         <span class="checkbox-custom"></span>
       </label>
       <input placeholder="Say something..." type="text" v-model="item.text" :disabled=" item.checked || locked" @keyup.enter="onChange">
-      <a class="delete-item" v-if="item.checked && !locked" @click="item.isDelte = true;onChange()">
+      <a class="delete-item" v-if="item.checked && !locked" @click="item.isDelete = true;onChange()">
         <span class="icon-trash"></span>
       </a>
     </div>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { editRecord } from '../api/api.js';
+import { editRecord } from '../api/api';
 
 export default {
   props: {
@@ -27,10 +27,10 @@ export default {
         };
       }
     },
-    'index': {},
-    'id': {},
-    'init': {},
-    'locked': {}
+    index: {},
+    id: {},
+    init: {},
+    locked: {}
   },
   methods: {
     onChange() {

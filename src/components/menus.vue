@@ -56,7 +56,7 @@ export default {
     }
   },
   watch: {
-    'todoId'(id) {
+    todoId(id) {
       this.$router.push({
         name: 'todo',
         params: { id }

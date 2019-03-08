@@ -69,6 +69,7 @@ export default {
     item
   },
   watch: {
+    // eslint-disable-next-line
     '$route.params.id'() {
       this.init();
     }
@@ -79,31 +80,31 @@ export default {
   methods: {
     init() {
       const ID = this.$route.params.id;
-      getTodo({id: ID}).then(res => {
-        let {id, title, count, isDelete, locked, record } = res.data.todo;
+      getTodo({ id: ID }).then(res => {
+        let { id, title, count, isDelete, locked, record } = res.data.todo;
         this.items = record;
         this.todo = {
-          id: id,
-          title: title,
-          count: count,
-          locked: locked,
-          isDelete: isDelete
+          id,
+          title,
+          count,
+          locked,
+          isDelete
         };
       });
     },
     onAdd() {
       const ID = this.$route.params.id;
-      addRecord({id: ID, text: this.text }).then(res => {
+      addRecord({ id: ID, text: this.text }).then(res => {
         this.text = '';
         this.init()
       });
     },
     updateTodo() {
-      let _this = this;
+      let that = this;
       editTodo({
         todo: this.todo
       }).then(data => {
-        _this.$store.dispatch('getTodo');
+        that.$store.dispatch('getTodo');
       })
     },
     updateTitle() {
